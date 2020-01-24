@@ -1,0 +1,22 @@
+html {
+    background-color: rgb(54, 57, 63)
+}
+
+
+
+li {
+    list-style-type: none;
+    color: #AEAEB0;
+    text-align: left;
+}
+
+footer {
+    background-color: #7E98FA;
+    min-height: 30px;
+}
+
+nav {
+    background-color: #26262B;
+    min-height: 10px;
+
+}
