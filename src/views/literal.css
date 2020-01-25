@@ -1,12 +1,13 @@
 html {
-    background-color: rgb(54, 57, 63)
+    background-color: rgb(54, 57, 63);
+    color: #AEAEB0
 }
 
 
 
 li {
     list-style-type: none;
-    color: #AEAEB0;
+    color: grey;
     text-align: left;
 }
 
@@ -19,4 +20,8 @@ nav {
     background-color: #26262B;
     min-height: 10px;
 
+}
+
+a {
+    color: grey;
 }
