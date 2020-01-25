@@ -14,6 +14,18 @@ CREATE TABLE 'server'(
     FOREIGN KEY (user) REFERENCES user(user_id)
 );
 
+CREATE TABLE emoji(
+emoji_id INTEGER PRIMARY KEY,
+'name' VARCHAR,
+roles INTEGER,
+users INTEGER,
+require_colons INTEGER,
+managed INTEGER,
+animated INTEGER,
+FOREIGN KEY (roles) REFERENCES roles(role_id),
+FOREIGN KEY (users) REFERENCES user(user_id)
+
+);
 
 CREATE TABLE 'role'(
     role_id INTEGER PRIMARY KEY,
