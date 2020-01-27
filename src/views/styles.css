@@ -1,14 +1,19 @@
 html {
     background-color: rgb(54, 57, 63);
-    color: #AEAEB0
+    
 }
 
+h1, h2 {
+    color: lightblue;
+}
 
+thead {
+    background-color: #7E98FA;
+}
 
-li {
-    list-style-type: none;
-    color: grey;
-    text-align: left;
+tbody {
+    background-color: rgb(69, 72, 78);
+    color:#AEAEB0;
 }
 
 footer {

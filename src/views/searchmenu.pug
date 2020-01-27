@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        
+        style
+            include styles.css
+
+        title Search Queries
+     
+
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        
+    body
+        
+        h1 Search Section
+        <form>
+         <input type="button" onclick="window.location.href = 'http://localhost:3000/users';" value="Display all users"/>
+        </form>
+    </br>
+        <form>
+         <input type="button" onclick="window.location.href = 'http://localhost:3000/servers';" value="Display server count"/>
+        </form>
+        </br>
+        <form>
+
+            h2 Search for a specific user by id </br>
+            <input type="text" name="id" />
+            
+            <input type="submit", value="Search">
+
+        </form>
+        </br>
+        <form>
+
+            h2 Search for servers a user is in </br>
+            <input type="text" name="userserverid" />
+            
+            <input type="submit", value="Search">
+
+        </form>
+
+    
+

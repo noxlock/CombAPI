@@ -1,0 +1,4 @@
+::1 - - [27/Jan/2020:09:18:23 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+::1 - - [27/Jan/2020:09:18:43 +0000] "GET /search HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+::1 - - [27/Jan/2020:09:18:48 +0000] "GET /users HTTP/1.1" 304 - "http://localhost:3000/search" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+::1 - - [27/Jan/2020:09:20:38 +0000] "GET /users HTTP/1.1" 304 - "http://localhost:3000/search" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"

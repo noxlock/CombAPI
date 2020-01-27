@@ -1,7 +1,8 @@
 const Database = require('better-sqlite3')
+const path = require('path')
 
 const db = new Database(
-    '/home/noxlock/Downloads/CA/T3A3/sql/dater.db'
+    path.join(__dirname, '../sql/dater.db')
 )
 
 
@@ -22,9 +23,9 @@ function createUser(data) {
     query.run(data.user_id, data.username, data.password, data.role)
 }
 
-function modifyUser(body, params) {
+function modifyUser(body, id) {
     let query = db.prepare(`UPDATE user SET password = ? WHERE user_id = ?`)
-    query.run(body.new_password, params)
+    query.run(body.new_password, id)
 }
 
 function deleteUser(id) {
@@ -32,11 +33,22 @@ function deleteUser(id) {
     return query.run(id)
 }
 
+function countServers() {
+    let query = db.prepare(`SELECT COUNT(DISTINCT server_id) FROM server`)
+    return query.get()
+}
+
+function searchUserServers(id) {
+    let query = db.prepare(`SELECT username, server_name FROM user JOIN server ON user_id = user WHERE user_id = ?`)
+    return query.all(id)
+}
 
 module.exports = {
     getAllUsers: getAllUsers,
     getSingleUser: getSingleUser,
     createUser: createUser,
     modifyUser: modifyUser,
-    deleteUser: deleteUser
+    deleteUser: deleteUser,
+    countServers: countServers,
+    searchUserServers: searchUserServers
 }
