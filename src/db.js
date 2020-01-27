@@ -1,6 +1,6 @@
 const Database = require('better-sqlite3')
 const path = require('path')
-
+const crypto = require('crypto')
 const db = new Database(
     path.join(__dirname, '../sql/dater.db')
 )
@@ -19,13 +19,16 @@ function getSingleUser(id) {
 }
 
 function createUser(data) {
+
+    let passhash = crypto.createHash('sha256').update('data.password').digest('hex')
     let query = db.prepare(`INSERT INTO user(user_id, username, password, role) VALUES (?, ?, ?, ?)`)
-    query.run(data.user_id, data.username, data.password, data.role)
+    query.run(data.user_id, data.username, passhash, data.role)
 }
 
 function modifyUser(body, id) {
+    let passhash = crypto.createHash('sha256').update('body.new_password').digest('hex')
     let query = db.prepare(`UPDATE user SET password = ? WHERE user_id = ?`)
-    query.run(body.new_password, id)
+    query.run(passhash, id)
 }
 
 function deleteUser(id) {
@@ -43,6 +46,15 @@ function searchUserServers(id) {
     return query.all(id)
 }
 
+function dumpData() {
+    let query1 = db.prepare(`SELECT * FROM server`)
+    let query2 = db.prepare(`SELECT * FROM user`)
+    let query3 = db.prepare(`SELECT * FROM role`)
+    let query4 = db.prepare(`SELECT * FROM message`)
+    let query5 = db.prepare(`SELECT * FROM emoji`)
+    query.all('')
+}
+
 module.exports = {
     getAllUsers: getAllUsers,
     getSingleUser: getSingleUser,
@@ -50,5 +62,6 @@ module.exports = {
     modifyUser: modifyUser,
     deleteUser: deleteUser,
     countServers: countServers,
-    searchUserServers: searchUserServers
+    searchUserServers: searchUserServers,
+    dumpData: dumpData
 }

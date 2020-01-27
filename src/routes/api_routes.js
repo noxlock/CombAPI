@@ -1,6 +1,7 @@
 const express = require('express')
 const database = require('../db.js')
 const bodyParser = require('body-parser')
+const fs = require('fs')
 
 const backRouter = express.Router()
 // backRouter.use(bodyParser.urlencoded({ extended: true}))
@@ -48,6 +49,20 @@ backRouter.patch("/users/:id", (req, res) => {
 backRouter.delete("/users/:id", (req, res) => {
     database.deleteUser(req.params.id)
     res.send('User deleted!')
+})
+
+backRouter.get("/dump", (req, res) => {
+    // let rowsToWrite = ''
+    // for (let i = 0; i < results.length; i++) {
+    //     rowsToWrite += results[i].username + ' ' + results[i].server_name + ' \n'
+    // }
+    // console.log(rowsToWrite)
+    // fs.writeFile('server.csv', (rowsToWrite), (err) => {
+    //     console.error(`error: ${err}`)
+    // })
+    let results = database.dumpData()
+    console.log(results)
+
 })
 
 module.exports = backRouter
