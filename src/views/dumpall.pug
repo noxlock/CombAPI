@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        
+        style
+            include styles.css
+       
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Page
+    body
+ 
+    h1 Full database dump
+    h2 Server Table
+
+        table
+                thead
+                    tr
+                        th server_id
+                        th server_ame
+                        th user
+                tbody
+                    for columns in data.server
+                        tr
+                            for records in columns
+                                td=records
+
+    h2 User Table
+        table
+                thead
+                    tr
+                        th user_id
+                        th username
+                        th password
+                        th role
+                tbody
+                    for columns in data.user
+                        tr
+                            for records in columns
+                                td=records
+
+
+    h2 Role Table
+        table
+                thead
+                    tr
+                        th role_id
+                        th role_name
+                        th moderator
+                        th admin
+                tbody
+                    for columns in data.role
+                        tr
+                            for records in columns
+                                td=records
+
+
+h2 Message Table
+        table
+                thead
+                    tr
+                        th message_id
+                        th message_contents
+                        th author
+                tbody
+                    for columns in data.message
+                        tr
+                            for records in columns
+                                td=records
+
+h2 Emoji Table
+        table
+                thead
+                    tr
+                        th emoji_id
+                        th name
+                        th roles
+                        th users
+                        th require_colons
+                        th managed
+                        th animated
+                tbody
+                    for columns in data.emoji
+                        tr
+                            for records in columns
+                                td=records
+
+

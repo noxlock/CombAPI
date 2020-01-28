@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        
+        style
+            include styles.css
+       
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Page
+    body
+ 
+        h1 Staff Member Listing
+
+        table
+                thead
+                    tr
+                        th User_id
+                        th Username
+                        th Role_id
+                tbody
+                    for columns in data
+                        tr
+                            for records in columns
+                                td=records
+
