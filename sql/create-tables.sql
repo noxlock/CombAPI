@@ -1,42 +1,59 @@
-CREATE TABLE user(
-    user_id INTEGER PRIMARY KEY,
-    username VARCHAR NOT NULL,
-    'password' VARCHAR NOT NULL,
-    'role' INTEGER,
-    FOREIGN KEY ('role') REFERENCES 'role'(role_id)
-
+create table role
+(
+    role_id   INTEGER not null,
+    role_name VARCHAR not null,
+    admin     INTEGER not null,
+    moderator INTEGER not null,
+    primary key (role_id)
 );
 
-CREATE TABLE 'server'(
-    server_id INTEGER PRIMARY KEY,
-    server_name TEXT NOT NULL,
-    user INTEGER,
-    FOREIGN KEY (user) REFERENCES user(user_id)
+create table user
+(
+    user_id  INTEGER     not null,
+    username VARCHAR     not null,
+    password VARCHAR(64) not null,
+    role     INTEGER     not null,
+    primary key (user_id),
+    foreign key (role) references role
 );
 
-CREATE TABLE emoji(
-emoji_id INTEGER PRIMARY KEY,
-'name' VARCHAR,
-roles INTEGER,
-users INTEGER,
-require_colons INTEGER,
-managed INTEGER,
-animated INTEGER,
-FOREIGN KEY (roles) REFERENCES roles(role_id),
-FOREIGN KEY (users) REFERENCES user(user_id)
-
+create table emoji
+(
+    emoji_id       INTEGER not null,
+    name           VARCHAR not null,
+    roles          INTEGER,
+    users          INTEGER,
+    require_colons INTEGER not null,
+    managed        INTEGER not null,
+    animated       INTEGER not null,
+    primary key (emoji_id),
+    foreign key (roles) references role,
+    foreign key (users) references user
 );
 
-CREATE TABLE 'role'(
-    role_id INTEGER PRIMARY KEY,
-    role_name VARCHAR,
-    'admin' INTEGER,
-    moderator INTEGER
+create unique index emoji_emoji_id_uindex
+    on emoji (emoji_id);
+
+create table message
+(
+    message_id       INTEGER not null,
+    message_contents TEXT    not null,
+    author           INTEGER not null,
+    primary key (message_id),
+    foreign key (author) references user
+        on delete cascade
 );
 
-CREATE TABLE 'message'(
-    message_id INTEGER PRIMARY KEY,
-    message_contents TEXT NOT NULL,
-    author INTEGER,
-    FOREIGN KEY (author) REFERENCES user(user_id)
+create table server
+(
+    server_id   INTEGER not null,
+    server_name TEXT    not null,
+    user        INTEGER not null,
+    foreign key (user) references user
+        on delete cascade
 );
+
+create unique index user_username_uindex
+    on user (username);
+
+
