@@ -47,7 +47,8 @@ The API has all three layers of a project:
   - node-fetch
   - pug
 
-  
+
+
 
 #### Hosting It
 
@@ -55,13 +56,19 @@ Clone the repository to your system.
 
 `git clone https://github.com/noxlock/CombAPI.git`
 
+
+
 Enter the root directory of the repo.
 
 `cd CombAPI`
 
+
+
 Install all required dependencies with NPM.
 
 `npm install`
+
+
 
 Once all the dependencies are installed, run the **srv.js** file in the src folder.
 
@@ -77,9 +84,13 @@ Note: connecting isn't needed to access the routes, it's just for those who pref
 
 
 
+
+
 #### Usage
 
 The API can be accessed through the user-friendly GUI, or through the individual API routes.
+
+
 
 
 
@@ -89,9 +100,13 @@ It's really simple, navigate to the URL of the web server, and click on whatever
 
 
 
+
+
 ##### Routes
 
 This covers the back-end routes that interact with the database, NOT any of the GUI routes.
+
+
 
 
 
@@ -101,9 +116,13 @@ Displays all the users.
 
 
 
+
+
 ##### GET /users/:id
 
 Displays a specific user's data
+
+
 
 
 
@@ -113,9 +132,13 @@ Displays the number of servers present in the database.
 
 
 
+
+
 ##### GET /users/servers/:id
 
 Displays the servers that the user is a member of.
+
+
 
 
 
@@ -145,6 +168,10 @@ Before being inserted into the database, passwords are hashed using the `crypto`
 
 
 
+
+
+
+
 ##### PATCH /users/:id
 
 Modifies a user's password field.
@@ -152,6 +179,10 @@ Modifies a user's password field.
 
 
 Before being inserted into the database, passwords are hashed using the `crypto` library.
+
+
+
+
 
 
 
@@ -165,9 +196,17 @@ Before being inserted into the database, passwords are hashed using the `crypto`
 
 
 
+
+
+
+
 ##### DELETE /users/:id
 
 Deletes a specific user, selected by :id
+
+
+
+
 
 ###### Data format:
 
@@ -179,15 +218,25 @@ Deletes a specific user, selected by :id
 
 
 
+
+
+
+
 ##### GET /dump
 
 Displays ALL data from the database.
 
 
 
+
+
 ##### GET /staff
 
 Displays all staff members (members with roles that have `administrator` or `moderator` field set to 1).
+
+
+
+
 
 
 
