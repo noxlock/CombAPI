@@ -84,7 +84,7 @@ function doesUserAlreadyExist(data) {
 // CHECKS IF A USER EXISTS BEFORE ATTEMPTING TO DISPLAY THEIR DATA
 function doesUserExistSearch(data) {
     let query = db.prepare(`SELECT user_id FROM user WHERE user_id = ?`)
-    query.get(data.id)
+    return query.get(data.id)
 }
 
 
